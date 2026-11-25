@@ -19,7 +19,7 @@ var THEMES={
     dots:['#D9382F','#F2A7BE','#F4D35E','#3AA89A','#9C8CD9','#E5762F'],deco:['#F2A7BE','#F4D35E','#3AA89A','#9C8CD9','#E5762F','#8CD2EF'],
     facts:[['#F2A7BE','#18121A'],['#F4D35E','#18121A'],['#3AA89A','#0F1A18']],
     bands:{white:DARKTXT('#FFFFFF','#18121A','#C7588A'),teal:DARKTXT('#3AA89A','#0D1716'),red:LIGHTTXT('#C8352E','#FFF4F2'),yellow:DARKTXT('#F4D35E','#18121A')},
-    chap:[null,'white',null,'white','teal',null,'red','yellow']},
+    chap:[null,'white',null,'white',null,'red','yellow']},
   vangogh:{bg:'#071D33',bg2:'#0F2B48',ink:'#F4EDDD',ink2:'#D8DCD6',muted:'#93A9BA',accent:'#C9AB64',onacc:'#071D33',paper:'#F4EDDD',line:'rgba(244,237,221,.13)',
     fh:"'Cormorant Garamond',Georgia,serif",fhw:600,fb:"'Inter',system-ui,sans-serif",hs:1,hero:'img05.jpg',
     dots:['#071D33','#1E466C','#587884','#869582','#C9AB64','#B27B1D'],deco:['#F5D98B'],plain:1,
@@ -285,6 +285,7 @@ window.renderDetail=function(pid){
     var rep=ov&&ov(b0);(rep||[b0]).forEach(function(x){cur.media.push(x);});
   });
   if(cur.h||cur.media.length)chapters.push(cur);
+  if(pid==='mono')chapters=chapters.filter(function(c){return !/brand book/i.test(c.h||'');});
   var en=window.LANG==='en';
   var h='<div class="pj t-'+pid+'">';
   h+='<div class="pj-bar"><div class="w"><button class="pj-back" id="pjBack">← '+(en?'All work':'Tutti i lavori')+'</button><span class="pj-name">'+d.title+'</span><nav class="pj-chips" id="pjChips">';
