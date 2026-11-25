@@ -168,7 +168,7 @@ var OVR={
     {t:'fb',bg:'#000000',ink:'#F3F3F8',items:[{t:'trio',items:[['@n_est','Versione estesa','Extended version'],['@n_vis','Versione visual','Visual version'],['@n_mon','Monogramma','Monogram']]}]}];
   if(b.img==='img77.jpg')return [{t:'cats',items:[['cat_killing.webp','Killing brief','#E58845',['#E58845','#D95599','#5ACEEE','#823CB5']],['cat_good.webp','For good','#C5E153',['#C5E153','#5ACEEE','#E58845','#FFFFFF']],['cat_social.webp','Social media mention','#D95599',['#D95599','#E58845','#5ACEEE','#823CB5']],['cat_grand.webp','Grandprix','#5ACEEE',['#5ACEEE','#C5E153','#E58845','#FFFFFF']]],it:b.it,en:b.en}];
   if(b.img==='img75.jpg')return [{t:'icons',it:b.it,en:b.en}];
-  if(b.t==='duo'&&b.a==='img78.jpg')return [{t:'fb',bg:'#000000',ink:'#F3F3F8',items:[{t:'stage',src:'premio3d.jpg',it:'Il premio NCA26: il cubo isometrico nelle sue diverse angolazioni.',en:'The NCA26 award: the isometric cube from different angles.'}]}];
+  if(b.t==='duo'&&b.a==='img78.jpg')return [{t:'fb',bg:'#000000',ink:'#F3F3F8',items:[{t:'stage',src:'premio_nca26.jpg',it:'Il premio NCA26: il cubo isometrico nelle sue diverse angolazioni.',en:'The NCA26 award: the isometric cube from different angles.'}]}];
   if(b.t==='duo'&&b.a==='img80.jpg')return [{t:'cut',src:'@n_tov',it:'Tone of voice: «Every Pixel Counts», inclusivo, amichevole e informale.',en:'Tone of voice: “Every Pixel Counts”, inclusive, friendly and informal.'},
     {t:'full',img:'@n_city',it:'Milano + Roma: la campagna come rete diffusa sul territorio.',en:'Milan + Rome: the campaign as a network across the territory.'}];
  },
