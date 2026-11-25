@@ -141,9 +141,9 @@ var OVR={
  },
  mono:function(b){
   if(b.img==='img31.jpg')return [{t:'cut',src:'img31.jpg',it:b.it,en:b.en}];
-  if(b.t==='duo'&&b.a==='img32.jpg')return [{t:'posneg',it:b.it,en:b.en}];
-  if(b.img==='img04.jpg')return [{t:'colors',it:b.it,en:b.en}];
-  if(b.t==='duo'&&b.a==='img34.jpg')return [{t:'patband',src:'pat_light.svg',bg:'#FFFFFF',it:b.it,en:b.en},{t:'patband',src:'pat_dark.svg',bg:'#231F20'}];
+  if(b.t==='duo'&&b.a==='img32.jpg')return [];
+  if(b.img==='img04.jpg')return [{t:'monolab'}];
+  if(b.t==='duo'&&b.a==='img34.jpg')return [];
   if(b.t==='grid'&&b.imgs[0]==='img36.jpg')return [{t:'mosaic',items:b.imgs,it:b.it,en:b.en}];
  },
  vangogh:function(b){
@@ -222,6 +222,8 @@ function media(b,hero,T){
     var ct='<div class="pj-cats">';b.items.forEach(function(x,i){var kf=x[3].map(function(c,k){return c;}).join(',');ct+='<div class="ct rv" data-cols="'+kf+'" style="background:'+x[2]+';transition-delay:'+(i*80)+'ms"><img src="'+x[0]+'" alt="'+x[1]+'" loading="lazy"></div>';});
     return ct+'</div>'+capH(c);
   case 'stage': return '<figure class="pj-stage rv">'+img(b.src)+(c?'<figcaption class="pj-cap">'+c+'</figcaption>':'')+'</figure>';
+  case 'monolab':
+    return '<div class="pj-fbx pj-lab" style="--h:330;--day:1"><div class="stage">'+abSvg('currentColor','ab big')+'</div><div class="pj-lab-ctl"><div class="row"><span class="lb">'+L('Colore','Colour')+'</span><input class="hue" type="range" min="0" max="360" step="1" value="330" aria-label="'+L('Colore del monogramma','Monogram colour')+'"><span class="hex">#000000</span></div><div class="row"><span class="lb">☀︎ '+L('Giorno','Day')+'</span><input class="dn" type="range" min="0" max="1" step="0.01" value="0" aria-label="'+L('Sfondo chiaro o scuro','Light or dark background')+'"><span class="lb r">'+L('Notte','Night')+' ☾</span></div><p class="hint">'+L('Trascina i cursori: tutti i colori del monogramma, in positivo su bianco e in negativo su nero.','Drag the sliders: every colour of the monogram, in positive on white and negative on black.')+'</p></div></div>';
   case 'icons':
     var ic='<div class="pj-icons">';NICONS.forEach(function(x,i){ic+='<button type="button" class="pi rv" style="--c:'+x[3]+';--d:'+(i*0.18).toFixed(2)+'s;transition-delay:'+(i*60)+'ms" aria-label="'+x[0]+'"><svg viewBox="-1 -1 '+(x[1]+2)+' '+(x[2]+2)+'" shape-rendering="crispEdges"><path d="'+x[4]+'"/></svg></button>';});
     return ic+'</div>'+capH(c);
@@ -303,7 +305,7 @@ window.renderDetail=function(pid){
     CURH=strip(c.h||'');var mh='';c.media.forEach(function(b){mh+=media(b,hero,T);});
     if(!c.h&&!mh)return;
     var bk=c.h?(T.chap||[])[hi]:null;if(c.h)hi++;var B=bk&&T.bands[bk];
-    h+='<section class="pj-ch'+(c.h?'':' nohead')+(B?' band b-'+bk:'')+'" id="pjc'+i+'"'+(B?' style="'+bandStyle(B)+'"':'')+'>'+gut(pid,T,i+3,6)+'<div class="w">';
+    h+='<section class="pj-ch'+(mh?'':' nomedia')+(c.h?'':' nohead')+(B?' band b-'+bk:'')+'" id="pjc'+i+'"'+(B?' style="'+bandStyle(B)+'"':'')+'>'+gut(pid,T,i+3,6)+'<div class="w">';
     if(c.h){num++;h+='<div class="pj-ch-head rv"><span class="pj-ch-n">'+chapNum(pid,num)+'</span><h2>'+strip(c.h)+'</h2></div><div class="pj-ch-text rv"><p>'+c.p+'</p></div>';}
     if(mh)h+='<div class="pj-ch-media">'+mh+'</div>';
     h+='</div></section>';
@@ -343,6 +345,10 @@ function wire(el){
   el.querySelectorAll('.pj-cats .ct').forEach(function(t){var cs=t.getAttribute('data-cols').split(','),k=0,tm=null;
     t.addEventListener('mouseenter',function(){clearInterval(tm);tm=setInterval(function(){k=(k+1)%cs.length;t.style.background=cs[k];},330);});
     t.addEventListener('mouseleave',function(){clearInterval(tm);k=0;t.style.background=cs[0];});});
+  el.querySelectorAll('.pj-lab').forEach(function(lb){var hu=lb.querySelector('.hue'),dn=lb.querySelector('.dn'),hx=lb.querySelector('.hex');
+    function hsl2hex(h,s,l){s/=100;l/=100;var k=function(n){return (n+h/30)%12;},a=s*Math.min(l,1-l),f=function(n){return Math.round(255*(l-a*Math.max(-1,Math.min(k(n)-3,9-k(n),1))));};return '#'+[f(0),f(8),f(4)].map(function(v){return v.toString(16).padStart(2,'0');}).join('').toUpperCase();}
+    function upd(){var h=+hu.value,d=+dn.value,c=hsl2hex(h,82,d>.5?62:50);lb.style.setProperty('--fg',c);var g=Math.round(255*(1-d));lb.style.setProperty('--bgc','rgb('+g+','+g+','+Math.round(g*0.985+ (1-d)*0)+')');lb.style.setProperty('--ui',d>.5?'#F3F3F3':'#18121A');hx.textContent=c;}
+    hu.addEventListener('input',upd);dn.addEventListener('input',upd);upd();});
   var nh=el.querySelector('.t-naba .pj-hero');
   if(nh&&!RM){var lastT=0,cols=THEMES.naba.dots;nh.addEventListener('mousemove',function(e){var now=performance.now();if(now-lastT<28)return;lastT=now;
     var r=nh.getBoundingClientRect(),G=18,x=Math.floor((e.clientX-r.left)/G)*G,y=Math.floor((e.clientY-r.top)/G)*G;
