@@ -36,7 +36,7 @@ var THEMES={
     dots:['#5ACEEE','#C5E153','#E58845','#D95599','#823CB5'],deco:['#5ACEEE','#C5E153','#E58845','#D95599','#823CB5'],
     facts:[['#5ACEEE','#0A0A11'],['#C5E153','#0A0A11'],['#E58845','#0A0A11'],['#D95599','#0A0A11']],
     bands:{lime:DARKTXT('#C5E153','#0A0A11'),magenta:DARKTXT('#D95599','#0A0A11'),viola:LIGHTTXT('#823CB5','#FFFFFF'),white:DARKTXT('#FFFFFF','#0A0A11','#823CB5')},
-    chap:[null,'viola','white',null,'lime',null,'magenta',null]},
+    chap:[null,'viola','white',null,null,null,'magenta',null]},
   incanto:{bg:'#0C1A33',bg2:'#132748',ink:'#F8F1E2',ink2:'#DCD6CB',muted:'#A6B3CB',accent:'#D9B35C',onacc:'#0C1A33',line:'rgba(248,241,226,.13)',
     fh:"'Cinzel',Georgia,serif",fhw:500,fb:"'Inter',system-ui,sans-serif",hs:.82,hero:'img08.jpg',
     dots:['#2F4A7A','#D9B35C','#F8F1E2'],deco:['#D9B35C'],plain:1,
@@ -168,7 +168,7 @@ var OVR={
     {t:'fb',bg:'#000000',ink:'#F3F3F8',items:[{t:'trio',items:[['@n_est','Versione estesa','Extended version'],['@n_vis','Versione visual','Visual version'],['@n_mon','Monogramma','Monogram']]}]}];
   if(b.img==='img77.jpg')return [{t:'cats',items:[['cat_killing.webp','Killing brief','#E58845',['#E58845','#D95599','#5ACEEE','#823CB5']],['cat_good.webp','For good','#C5E153',['#C5E153','#5ACEEE','#E58845','#FFFFFF']],['cat_social.webp','Social media mention','#D95599',['#D95599','#E58845','#5ACEEE','#823CB5']],['cat_grand.webp','Grandprix','#5ACEEE',['#5ACEEE','#C5E153','#E58845','#FFFFFF']]],it:b.it,en:b.en}];
   if(b.img==='img75.jpg')return [{t:'icons',it:b.it,en:b.en}];
-  if(b.t==='duo'&&b.a==='img78.jpg')return [{t:'mosaic',items:['@n_big','@n_s1','@n_s2','@n_s3','@n_s4'],it:b.it,en:b.en},{t:'mosaic',items:['@n_r1','@n_r2','@n_r3','@n_r4','@n_r5'],it:'Le viste del modello 3D.',en:'Views of the 3D model.'}];
+  if(b.t==='duo'&&b.a==='img78.jpg')return [{t:'fb',bg:'#000000',ink:'#F3F3F8',items:[{t:'stage',src:'premio3d.jpg',it:'Il premio NCA26: il cubo isometrico nelle sue diverse angolazioni.',en:'The NCA26 award: the isometric cube from different angles.'}]}];
   if(b.t==='duo'&&b.a==='img80.jpg')return [{t:'cut',src:'@n_tov',it:'Tone of voice: «Every Pixel Counts», inclusivo, amichevole e informale.',en:'Tone of voice: “Every Pixel Counts”, inclusive, friendly and informal.'},
     {t:'full',img:'@n_city',it:'Milano + Roma: la campagna come rete diffusa sul territorio.',en:'Milan + Rome: the campaign as a network across the territory.'}];
  },
@@ -221,6 +221,7 @@ function media(b,hero,T){
   case 'cats':
     var ct='<div class="pj-cats">';b.items.forEach(function(x,i){var kf=x[3].map(function(c,k){return c;}).join(',');ct+='<div class="ct rv" data-cols="'+kf+'" style="background:'+x[2]+';transition-delay:'+(i*80)+'ms"><img src="'+x[0]+'" alt="'+x[1]+'" loading="lazy"></div>';});
     return ct+'</div>'+capH(c);
+  case 'stage': return '<figure class="pj-stage rv">'+img(b.src)+(c?'<figcaption class="pj-cap">'+c+'</figcaption>':'')+'</figure>';
   case 'icons':
     var ic='<div class="pj-icons">';NICONS.forEach(function(x,i){ic+='<button type="button" class="pi rv" style="--c:'+x[3]+';--d:'+(i*0.18).toFixed(2)+'s;transition-delay:'+(i*60)+'ms" aria-label="'+x[0]+'"><svg viewBox="-1 -1 '+(x[1]+2)+' '+(x[2]+2)+'" shape-rendering="crispEdges"><path d="'+x[4]+'"/></svg></button>';});
     return ic+'</div>'+capH(c);
