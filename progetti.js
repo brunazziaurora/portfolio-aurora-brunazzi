@@ -8,6 +8,12 @@ var D=function(bg,ink,ink2,muted,accent,line,bg2){return {bg:bg,ink:ink,ink2:ink
 var DARKTXT=function(bg,ink,acc){ink=ink||'#1B120E';return D(bg,ink,ink,ink,acc||ink,'rgba(0,0,0,.14)','rgba(0,0,0,.05)');};
 var LIGHTTXT=function(bg,ink,acc){ink=ink||'#FFF7EE';return D(bg,ink,ink,'rgba(255,255,255,.8)',acc||ink,'rgba(255,255,255,.22)','rgba(255,255,255,.08)');};
 var THEMES={
+  altrove:{bg:'#F5EFE6',bg2:'#ECE2D2',ink:'#233049',ink2:'#34415C',muted:'#56617A',accent:'#C2440A',onacc:'#FFFFFF',line:'rgba(35,48,73,.16)',
+    fh:"'Matcha Style','Barlow',sans-serif",fhw:400,fb:"'Barlow',system-ui,sans-serif",hs:.92,hero:'alt_hero.jpg',
+    dots:['#233049','#EA560D','#F5EFE6','#CEE2F2','#FBBC43'],deco:['#EA560D','#233049','#CEE2F2'],
+    facts:[['#233049','#F5EFE6'],['#CEE2F2','#233049'],['#FBBC43','#233049'],['#233049','#F5EFE6'],['#CEE2F2','#233049']],
+    bands:{navy:LIGHTTXT('#233049','#F5EFE6','#FBBC43'),sky:DARKTXT('#CEE2F2','#233049','#B23C06'),yellow:DARKTXT('#FBBC43','#233049','#233049')},
+    chap:[null,'navy',null,'sky',null,null,'navy',null,'sky',null,null,'yellow',null,'navy',null,'sky','yellow','navy']},
   martesana:{bg:'#2A1510',bg2:'#38201A',ink:'#F7ECDF',ink2:'#E5D3C2',muted:'#C29F8A',accent:'#D86654',onacc:'#2A1510',line:'rgba(247,236,223,.14)',
     fh:"'DM Serif Display',Georgia,serif",fhw:400,fb:"'Inter',system-ui,sans-serif",hero:'img25.jpg',
     dots:['#D86654','#739AAA','#D4B27E','#4A2418'],deco:['#D4B27E'],
@@ -44,7 +50,8 @@ var THEMES={
     chap:[null,null,null,'white','white',null,null]}
 };
 
-var MARQ={martesana:"Panettun de l'Enzo ✶ Milano ✶ Natale 2026 ✶ Martesana dal 1966 ✶ ",
+var MARQ={altrove:"Una porta su nuovi orizzonti ✺ Che città sei? ✺ Hai mai pensato di mollare tutto? ✺ ALTROVE ✺ ",
+ martesana:"Panettun de l'Enzo ✶ Milano ✶ Natale 2026 ✶ Martesana dal 1966 ✶ ",
  mono:"a + b ✶ un segno, infinite combinazioni ✶ ab ✶ ",
  vangogh:"Pennellate di emozione ✶ una vita fra i colori ✶ Vincent van Gogh ✶ ",
  storie:"il biscotto che racconta ❦ Storie Sbriciolate ❦ ogni biscotto è un capitolo ❦ ",

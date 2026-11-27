@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;600;800&family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;600;800&family=Press+Start+2P&family=Gloria+Hallelujah&family=Barlow:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@font-face{font-family:'Matcha Style';src:url('matcha_style.otf') format('opentype');font-display:swap}
 
 /* ===== Pagine progetto v6 — ogni progetto con la sua identità, ordine e rigore ===== */
 .detail{background:var(--bg,#120710);transition:opacity .35s,background-color .4s}
@@ -355,3 +356,25 @@
 .pj-lab-ctl .hint{font-size:.85rem;opacity:.7;text-align:center;margin-top:4px}
 @media (max-width:600px){.pj-lab-ctl .row{grid-template-columns:64px 1fr 64px;gap:10px}}
 .pj-ch.nomedia{min-height:0}
+
+/* ===== ALTROVE — tesi: carattere Matcha Style, forme organiche, palette blu/arancio/crema ===== */
+.card[data-proj="altrove"]{grid-column:1/-1}
+.card[data-proj="altrove"] .thumb{aspect-ratio:21/9}
+.card[data-proj="altrove"] .thumb img{object-position:center 45%}
+.t-altrove .pj-hero h1,.t-altrove .pj-ch h2,.t-altrove .pj-box h3,.t-altrove .pj-feat h3{text-transform:uppercase;letter-spacing:.01em;font-weight:400}
+.t-altrove .pj-hero h1{line-height:.95}
+.t-altrove .pj-ch-n{font-family:'Gloria Hallelujah',cursive;font-size:1.5rem;letter-spacing:0;color:var(--accent)}
+.t-altrove .pj-intro b,.t-altrove .pj-ch-text b{font-weight:700}
+.t-altrove .pj-fig img,.t-altrove figure img,.t-altrove .pj-mosaic .mi{border-radius:28px}
+.t-altrove .pj-mosaic .mi{overflow:hidden}
+.t-altrove .pj-stage{background:#FFFFFF;border-radius:40px;padding:clamp(28px,6vw,90px)}
+.t-altrove .pj-stage img{border-radius:0;max-height:none}
+.t-altrove .pj-open{position:relative;padding-bottom:clamp(110px,12vw,170px)}
+.t-altrove .pj-open::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(70px,9vw,130px);background:url('alt_waveD.jpg') center 38%/cover no-repeat;pointer-events:none}
+.t-altrove .pj-ch.band.b-navy{background-image:linear-gradient(var(--bg),var(--bg));}
+.t-altrove .pj-next{position:relative}
+.t-altrove .pj-next::before{content:"";display:block;height:clamp(70px,9vw,130px);background:url('alt_waveA.jpg') center 30%/cover no-repeat;margin-bottom:clamp(24px,4vw,48px)}
+.t-altrove .pj-marq{background:#EA560D;color:#233049;font-family:'Matcha Style','Barlow',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.t-altrove .pj-tag{border-radius:999px}
+.t-altrove .pj-feat .pj-val>div{border-radius:28px}
+.t-altrove .pj-palx .sw{border-radius:28px;box-shadow:inset 0 0 0 2px rgba(35,48,73,.18)}
